@@ -30,7 +30,7 @@
 #### Notes
 - Assuming that the client only needs to store the most recent service status to ascertain current app health
 - Assuming that the ES index storing the service status does not contain any other records  
-- Run app via command line using `flask run --cert=adhoc`
+- Run app via command line using `flask run --cert=adhoc` while in the working directory (i.e. the coding_exercise folder)  
 - The json_payloads folder will be created in the working dir  
 
 #### Examples
