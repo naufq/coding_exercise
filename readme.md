@@ -26,6 +26,7 @@
 - Assuming that the client only needs to store the most recent service status to ascertain current app health
 - It is assumed that this script will be scheduled on the concerning machines. Hence, it will run once, write the status to file, execute API to index the results into ES, and terminate.
 - Service names are hardcoded into the file
+- The json_payloads folder will be created in the working dir  
 
 ### b) Web service to write and read app status
 #### Filename `app.py`
@@ -34,7 +35,7 @@
 - Assuming that the client only needs to store the most recent service status to ascertain current app health
 - Assuming that the ES index storing the service status does not contain any other records  
 - Run app via command line using `flask run --cert=adhoc` while in the working directory (i.e. the coding_exercise folder)  
-- The json_payloads folder will be created in the working dir  
+- The json_payloads folder will be searched for in the working dir  
 
 #### Examples
 
