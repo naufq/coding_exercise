@@ -57,13 +57,10 @@
   - check_disk _(client can specify the mount that needs to be checked - defaults to /)_
   - check_status
 <br>
-- sample commands  
-  <br>
-  `ansible-playbook services_play.yml -i inventory.ini -e "act=verify_install"` _(root required to install)_  
-  <br>
-  `ansible-playbook services_play.yml -i inventory.ini -e "act=check_disk sender_address=mymail@domain.com password=my_pass recipient_address=receivermail@domain.com"`  
-  <br>
-  `ansible-playbook services_play.yml -i inventory.ini -e "act=check_status"` _(assumes status_check script updates es with latest status at a 'near-real-time' rate)_  
+- sample commands
+  - `ansible-playbook services_play.yml -i inventory.ini -e "act=verify_install"` _(root required to install)_  
+  - `ansible-playbook services_play.yml -i inventory.ini -e "act=check_disk sender_address=mymail@domain.com password=my_pass recipient_address=receivermail@domain.com"`  
+  - `ansible-playbook services_play.yml -i inventory.ini -e "act=check_status"` _(assumes status_check script updates es with latest status at a 'near-real-time' rate)_  
 
 
 ## Test 3 - Dataframe script
