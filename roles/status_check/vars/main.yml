@@ -1,0 +1,6 @@
+webservice_host: "localhost"
+webservice_port: "5000"
+services:
+  - apache2
+  - rabbitmq-server
+  - postgresql

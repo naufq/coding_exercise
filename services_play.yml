@@ -1,0 +1,10 @@
+---
+
+- name: services playbook
+  hosts: all
+  ignore_unreachable: yes
+  roles:
+    #- { role: verify_install, when: "act is defined and act == 'verify_install'" }
+    - verify_install
+    - disk_check
+    - status_check

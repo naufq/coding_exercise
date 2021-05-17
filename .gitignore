@@ -1,0 +1,4 @@
+/json_payloads/
+/__pycache__/
+output.csv
+*.log

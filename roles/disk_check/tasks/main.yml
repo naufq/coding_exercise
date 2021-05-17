@@ -1,0 +1,25 @@
+
+- name: Check if > 20% space is left on mounts
+  block:
+    - name: assert space
+      assert:
+        that: mount.size_available > mount.size_total|float * 0.2
+        msg: "more than 80% of {{ mount_name }} has been used"
+      vars: 
+        mount: "{{ ansible_mounts | selectattr('mount','equalto',mount_name) | list | first }}"
+      register: space_check
+  rescue:
+    - name: Sending alert
+      mail:
+        host: "{{ smtp_server | default('smtp.gmail.com') }}"
+        port: 587
+        username: "{{ sender_address }}"
+        password: "{{ password }}"
+        to: "{{ recipient_address }}"
+        subject: "Disk Space Alert for {{ inventory_hostname }}"
+        body: "{{ inventory_hostname }} has failed the disk space check for {{ mount_name }}"
+      delegate_to: localhost
+  when:
+    - act is defined
+    - act == "check_disk"
+    - ansible_mounts is defined

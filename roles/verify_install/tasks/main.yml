@@ -1,0 +1,8 @@
+- name: install apt package if it does not exist already
+  apt:
+    name: "{{ service }}"
+    state: present
+  become: yes
+  when:
+    - act is defined
+    - act == "verify_install"

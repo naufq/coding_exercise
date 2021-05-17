@@ -1,0 +1,49 @@
+- name: Check application status
+  uri:
+    url: https://{{ webservice_host }}:{{ webservice_port }}/healthcheck
+    method: GET
+    validate_certs: false
+  register: app_status
+  when:
+    - act is defined
+    - act == "check_status"
+
+- name: Check service status
+  uri:
+    url: "https://{{ webservice_host }}:{{ webservice_port }}/healthcheck/{{ service_name }}"
+    method: GET
+    validate_certs: false
+  loop: "{{ services | flatten(levels=1) }}"
+  loop_control:
+    loop_var: service_name
+  register: service_status
+  when:
+    - act is defined
+    - act == "check_status"
+    - not app_status is unreachable
+
+- name: Generate report
+  template:
+    src: report.j2
+    dest: /tmp/report.txt
+  delegate_to: localhost
+  when:
+    - act is defined
+    - act == "check_status"
+    - not app_status is unreachable
+
+- name: Fetch report
+  command: "cat /tmp/report.txt"
+  register: report
+  when:
+    - act is defined
+    - act == "check_status"
+    - not app_status is unreachable
+
+- name: Print report
+  debug:
+    msg: "{{ report.stdout.split('\n') }}"
+  when:
+    - act is defined
+    - act == "check_status"
+    - not app_status is unreachable

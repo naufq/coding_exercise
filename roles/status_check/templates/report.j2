@@ -1,0 +1,6 @@
+Application is {{ app_status.json.app_status }}
+{% for service in service_status.results %}
+{% if service.json.service_status == 'DOWN' %}
+{{ service.invocation.module_args.url | basename }} is DOWN
+{% endif %}
+{% endfor %}
