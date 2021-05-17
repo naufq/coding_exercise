@@ -56,7 +56,6 @@
   - verify_install
   - check_disk _(client can specify the mount that needs to be checked - defaults to /)_
   - check_status
-<br>
 - sample commands
   - `ansible-playbook services_play.yml -i inventory.ini -e "act=verify_install"` _(root required to install)_  
   - `ansible-playbook services_play.yml -i inventory.ini -e "act=check_disk sender_address=mymail@domain.com password=my_pass recipient_address=receivermail@domain.com"`  
