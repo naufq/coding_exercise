@@ -9,6 +9,9 @@
 - Ansible version `2.10.9`  
 - Working directory will be the `coding_exercise` folder
 
+<br>
+<br>
+
 ## Test 1 - Service status script, flask webservice, and elasticsearch
 
 ### a) Check status and write to file
@@ -44,6 +47,9 @@
 `curl -k -XGET https://localhost:5000/healthcheck/apache2
 {"service_status":"UP","success":true}`
 
+<br>
+<br>
+
 ## Test 2 - Ansible
 
 ### Files and Folders of Concern 
@@ -61,6 +67,8 @@
   - `ansible-playbook services_play.yml -i inventory.ini -e "act=check_disk sender_address=mymail@domain.com password=my_pass recipient_address=receivermail@domain.com"`  
   - `ansible-playbook services_play.yml -i inventory.ini -e "act=check_status"` _(assumes status_check script updates es with latest status at a 'near-real-time' rate)_  
 
+<br>
+<br>
 
 ## Test 3 - Dataframe script
 
